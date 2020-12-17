@@ -10,9 +10,8 @@
 
 ### Association
 
-- has_many :contents
-- has_many :sentences
 - has_many :diaries
+- has_many :sentences
 
 ## contents テーブル
 
@@ -23,7 +22,6 @@
 
 ### Association
 
-- belongs_to :user
 - has_many :sentences
 
 ## sentences テーブル
