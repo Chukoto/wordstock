@@ -1,0 +1,29 @@
+<%= form_with model: @content, url: contents_path, method: :post, local: true do |f| %>
+
+<%= render 'shared/error_messages', model: f.object %>
+
+  <div>
+    固有名詞の追加は禁止です。
+  </div>
+
+  <%# 品詞 %>
+  <div>
+    品詞
+    <span class="indispensable">必須</span>
+  </div>
+  <%= f.collection_select(:part_id, Part.all, :id, :name, {}, {class:"select-box", id:"content-part"}) %>
+
+  <%# 単語 %>
+  <div>
+    単語
+  </div>
+  <div>
+    <%= f.text_field :word, class:"word-input", id:"word_id"%>
+  </div>
+
+  <%# 送信ボタン %>
+  </div>
+    <%= f.submit "単語を追加する", class:"post" %>
+  </div>
+
+<% end %>

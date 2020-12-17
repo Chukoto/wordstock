@@ -17,7 +17,7 @@
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| part               | integer | null: false |
+| part_id            | integer | null: false |
 | word               | string  | null: false |
 
 ### Association
