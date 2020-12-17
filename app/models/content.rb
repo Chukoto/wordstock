@@ -4,7 +4,7 @@ class Content < ApplicationRecord
 
   with_options presence: true do
     validates :part_id, numericality: { other_than: 0 }
-    validates :word
+    validates :word, format: { with: /\A[a-z0-9]+\z/ }
   end
 
 end
