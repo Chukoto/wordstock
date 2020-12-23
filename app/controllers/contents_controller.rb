@@ -17,6 +17,10 @@ class ContentsController < ApplicationController
     end
   end
 
+  def show
+    @content = Content.find(params[:id])
+  end
+
 
   private
 

@@ -1,0 +1,18 @@
+<div>
+  <div>
+    <b><%= content.word%></b>
+    <%= content.part.name %>
+  </div>
+ 
+  <div>
+    <%= content.created_at %>
+  </div>
+
+  <div>
+    <%= link_to "#{content.word}を見る", content_path(content.id) %>
+  </div>
+</div>
+
+<%# CSS作成段階でスペースを削除すること %>
+　
+<%# //CSS作成段階でスペースを削除すること %>
