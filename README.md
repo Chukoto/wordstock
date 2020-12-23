@@ -11,6 +11,7 @@
 ### Association
 
 - has_many :diaries
+- has_many :descriptions
 - has_many :sentences
 
 ## contents テーブル
@@ -22,7 +23,19 @@
 
 ### Association
 
+- has_many :descriptions
 - has_many :sentences
+
+## descriptions テーブル
+
+| Column             | Type    | Options     |
+| ------------------ | ------- | ----------- |
+| text               | string  | null: false |
+
+### Association
+
+- belongs_to :content
+- belongs_to :user
 
 ## sentences テーブル
 
