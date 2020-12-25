@@ -7,4 +7,6 @@ class Content < ApplicationRecord
     validates :word, format: { with: /\A[a-z0-9]+\z/ }
   end
 
+  has_many :descriptions
+
 end
