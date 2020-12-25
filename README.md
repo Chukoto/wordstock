@@ -30,7 +30,7 @@
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| text               | string  | null: false |
+| english_text       | string  | null: false |
 
 ### Association
 
@@ -41,8 +41,8 @@
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
-| english            | string  | null: false |
-| japanese           | string  | null: true  |
+| english_text       | string  | null: false |
+| japanese_text      | string  | null: true  |
 
 ### Association
 

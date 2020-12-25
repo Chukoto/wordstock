@@ -1,0 +1,16 @@
+<%= form_with model: @description, url: content_descriptions_path, method: :post, local: true do |f| %>
+
+<%= render 'shared/error_messages', model: f.object %>
+
+
+<%# 単語の説明 %>
+<div>
+  <%= f.text_area :english_text, class:"a", cols: 50, rows: 10 %>
+</div>
+<%# //単語の説明 %>
+
+<div>
+  <%= f.submit "追加する", class:"post"  %>
+</div>
+
+<% end %>

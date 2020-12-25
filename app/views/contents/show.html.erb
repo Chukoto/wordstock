@@ -5,3 +5,13 @@
 <div>
   <%= @content.part.name %>
 </div>
+
+<div>
+  <%= link_to "意味を追加する", new_content_description_path(@content.id) %>
+</div>
+
+<div>
+  <% @descriptions.each do |description| %>
+    <%= description.english_text %>
+  <% end %>
+</div>
