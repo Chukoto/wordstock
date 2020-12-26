@@ -6,5 +6,6 @@ class CreateContents < ActiveRecord::Migration[6.0]
       t.references :user, null: false, foreign_key: true
       t.timestamps
     end
+    add_index :contents, [:part_id, :word], unique: true
   end
 end
