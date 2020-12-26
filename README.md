@@ -11,6 +11,7 @@
 ### Association
 
 - has_many :diaries
+- has_many :contents
 - has_many :descriptions
 - has_many :sentences
 
@@ -23,6 +24,7 @@
 
 ### Association
 
+- belongs_to :user
 - has_many :descriptions
 - has_many :sentences
 

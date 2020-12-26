@@ -15,8 +15,10 @@ ActiveRecord::Schema.define(version: 2020_12_24_041555) do
   create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "part_id", null: false
     t.string "word", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_contents_on_user_id"
   end
 
   create_table "descriptions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -41,6 +43,7 @@ ActiveRecord::Schema.define(version: 2020_12_24_041555) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "contents", "users"
   add_foreign_key "descriptions", "contents"
   add_foreign_key "descriptions", "users"
 end
