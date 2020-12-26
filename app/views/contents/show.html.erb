@@ -6,12 +6,16 @@
   <%= @content.part.name %>
 </div>
 
-<div>
-  <%= link_to "意味を追加する", new_content_description_path(@content.id) %>
-</div>
+<h2>
+  意味
+</h2>
 
 <div>
   <% @descriptions.each do |description| %>
-    <%= description.english_text %>
+    <%= simple_format(description.english_text) %>
   <% end %>
+</div>
+
+<div>
+  <%= link_to "意味を追加する", new_content_description_path(@content.id) %>
 </div>
