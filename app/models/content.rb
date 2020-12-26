@@ -3,7 +3,7 @@ class Content < ApplicationRecord
   belongs_to_active_hash :part
 
   with_options presence: true do
-    validates :part_id, numericality: { other_than: 0 }
+    validates :part_id, numericality: { other_than: 0 }, uniqueness: { scope: [:word]}
     validates :word, format: { with: /\A[a-z0-9]+\z/ }
   end
 
