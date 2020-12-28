@@ -25,5 +25,22 @@
 </h2>
 
 <div>
+  <% @sentences.each do |sentence| %>
+    -----------------------------------------<br>
+    <b>英語</b>
+    <div>
+      <%= simple_format(sentence.english_text) %>
+    </div>
+
+    <% if sentence.japanese_text.present? %>
+      <b>日本語</b>
+      <div>
+        <%= simple_format(sentence.japanese_text) %>
+      </div>
+    <% end %>
+  <% end %>
+</div>
+
+<div>
   <%= link_to "例文を追加する", new_content_sentence_path(@content.id) %>
 </div>
