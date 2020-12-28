@@ -2,10 +2,13 @@
 
 <%= render 'shared/error_messages', model: f.object %>
 
+<h1>
+  意味
+</h1>
 
 <%# 単語の説明 %>
 <div>
-  <%= f.text_area :english_text, class:"a", cols: 50, rows: 10 %>
+  <%= f.text_area :english_text, class:"english_text", placeholder: "English text only（必須）", cols: 50, rows: 10 %>
 </div>
 <%# //単語の説明 %>
 
