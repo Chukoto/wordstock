@@ -20,6 +20,7 @@ class ContentsController < ApplicationController
   def show
     @content = Content.find(params[:id])
     @descriptions = Description.where(content_id: params[:id])
+    @sentences = Sentence.where(content_id: params[:id])
   end
 
 
