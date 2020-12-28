@@ -1,4 +1,4 @@
-<%= form_with model: @content, url: contents_path, method: :post, local: true do |f| %>
+<%= form_with model: @content, url: content_path, method: :patch, local: true do |f| %>
 
 <%= render 'shared/error_messages', model: f.object %>
 
@@ -24,7 +24,7 @@
 
   <%# 送信ボタン %>
   </div>
-    <%= f.submit "単語を追加する", class:"post" %>
+    <%= f.submit "単語を更新する", class:"post" %>
   </div>
 
 <% end %>
