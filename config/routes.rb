@@ -4,5 +4,6 @@ Rails.application.routes.draw do
 
   resources :contents, only: [:index, :new, :create, :show] do
     resources :descriptions, only: [:new, :create]
+    resources :sentences, only: [:new, :create]
   end
 end
