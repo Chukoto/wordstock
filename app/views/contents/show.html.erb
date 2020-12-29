@@ -38,7 +38,8 @@
 
 <div>
   <% @sentences.each do |sentence| %>
-    -----------------------------------------<br>
+    <br>-----------------------------------------<br>
+    <%= "#{sentence.user.email}" %>
     <b>英語</b>
     <div>
       <%= simple_format(sentence.english_text) %>
@@ -49,6 +50,10 @@
       <div>
         <%= simple_format(sentence.japanese_text) %>
       </div>
+    <% end %>
+
+    <% if user_signed_in? && sentence.user.id == current_user.id %>
+      <%= link_to "編集する", edit_content_sentence_path(@content.id, sentence.id) %>
     <% end %>
   <% end %>
 </div>
