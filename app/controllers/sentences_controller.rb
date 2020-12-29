@@ -1,7 +1,7 @@
 class SentencesController < ApplicationController
   before_action :authenticate_user!, only: [:edit]
-  before_action :specified_sentence, only: [:edit, :update]
-  before_action :specified_user, only: [:edit]
+  before_action :specified_sentence, only: [:edit, :update, :destroy]
+  before_action :specified_user, only: [:edit, :destroy]
  
   def new
     @sentence = Sentence.new
@@ -24,6 +24,14 @@ class SentencesController < ApplicationController
       redirect_to root_path
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @sentence.destroy
+      redirect_to root_path
+    else
+      render :show
     end
   end
 
