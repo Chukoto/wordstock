@@ -1,0 +1,30 @@
+<%= form_with model: @sentence, url: content_sentence_path, method: :patch, local: true do |f| %>
+
+<%= render 'shared/error_messages', model: f.object %>
+
+<h1>
+  <%= "#{}例文" %>
+</h1>
+
+<%# 例文の説明 %>
+<h2>
+英語のテキスト
+</h2>
+
+<div>
+  <%= f.text_area :english_text, class:"english_text", placeholder: "English text only（必須）", cols: 50, rows: 10 %>
+</div>
+
+<h2>
+  日本語のテキスト
+</h2>
+<div>
+  <%= f.text_area :japanese_text, class:"japanese_text", placeholder: "日本語だけを入力（未記入でも可）", cols: 50, rows: 10 %>
+</div>
+<%# //例文の説明 %>
+
+<div>
+  <%= f.submit "更新する", class:"post"  %>
+</div>
+
+<% end %>
