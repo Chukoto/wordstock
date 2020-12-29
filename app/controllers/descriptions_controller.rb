@@ -1,7 +1,7 @@
 class DescriptionsController < ApplicationController
-  before_action :authenticate_user!, only: [:edit]
-  before_action :specified_description, only: [:edit, :update]
-  before_action :specified_user, only: [:edit]
+  before_action :authenticate_user!, only: [:edit, :destroy]
+  before_action :specified_description, only: [:edit, :update, :destroy]
+  before_action :specified_user, only: [:edit, :destroy]
 
   def new
     @description = Description.new
@@ -21,6 +21,14 @@ class DescriptionsController < ApplicationController
 
   def update
     if @description.update(description_params)
+      redirect_to root_path
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    if  @description.destroy
       redirect_to root_path
     else
       render :edit
