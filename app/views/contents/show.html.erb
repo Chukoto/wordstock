@@ -21,6 +21,9 @@
 <div>
   <% @descriptions.each do |description| %>
     <%= simple_format(description.english_text) %>
+    <% if user_signed_in? && description.user.id == current_user.id %>
+      <%= link_to "編集する", edit_content_description_path(@content.id, description.id) %>
+    <% end %>
   <% end %>
 </div>
 
