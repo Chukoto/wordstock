@@ -54,6 +54,7 @@
 
     <% if user_signed_in? && sentence.user.id == current_user.id %>
       <%= link_to "編集する", edit_content_sentence_path(@content.id, sentence.id) %>
+      <%= link_to "削除する", content_sentence_path(@content.id, sentence.id), method: :delete %>
     <% end %>
   <% end %>
 </div>
