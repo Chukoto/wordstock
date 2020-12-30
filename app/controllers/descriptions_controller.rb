@@ -10,7 +10,7 @@ class DescriptionsController < ApplicationController
   def create
     @description = Description.new(description_params)
     if @description.save
-      redirect_to root_path
+      redirect_to content_path(@description.content_id), notice: "意味の追加に成功しました"
     else
       render :new
     end
@@ -21,7 +21,7 @@ class DescriptionsController < ApplicationController
 
   def update
     if @description.update(description_params)
-      redirect_to root_path
+      redirect_to content_path(@description.content_id), notice: "意味の編集に成功しました"
     else
       render :edit
     end
@@ -29,7 +29,7 @@ class DescriptionsController < ApplicationController
 
   def destroy
     if  @description.destroy
-      redirect_to root_path
+      redirect_to content_path(@description.content_id), notice: "意味の削除に成功しました"
     else
       render :show
     end
