@@ -3,13 +3,17 @@
 <%= render 'shared/error_messages', model: f.object %>
 
 <h1>
-  <%= "#{}例文" %>
+  例文
 </h1>
 
 <%# 例文の説明 %>
 <h2>
 英語のテキスト
 </h2>
+
+<% if flash[:alert] %>
+  <%= flash[:alert] %>
+<% end %>
 
 <div>
   <%= f.text_area :english_text, class:"english_text", placeholder: "English text only（必須）", cols: 50, rows: 10 %>
