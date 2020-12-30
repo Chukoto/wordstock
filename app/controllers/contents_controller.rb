@@ -1,4 +1,5 @@
 class ContentsController < ApplicationController
+  before_action :specified_content, only: [:show, :edit, :update]
 
   def index
     @contents = Content.all
@@ -11,26 +12,23 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     if @content.save
-      redirect_to contents_path
+      redirect_to contents_path, notice: "単語の追加に成功しました"
     else
       render :new
     end
   end
 
   def show
-    @content = Content.find(params[:id])
     @descriptions = Description.where(content_id: params[:id])
     @sentences = Sentence.where(content_id: params[:id])
   end
 
   def edit
-    @content = Content.find(params[:id])
   end
 
   def update
-    @content = Content.find(params[:id])
     if @content.update(content_params)
-      redirect_to action: :show
+      redirect_to action: :show, notice: "単語の更新に成功しました"
     else
       render :edit
     end
@@ -40,5 +38,9 @@ class ContentsController < ApplicationController
 
   def content_params
     params.require(:content).permit(:part_id, :word).merge(user_id: current_user.id)
+  end
+
+  def specified_content
+    @content = Content.find(params[:id])
   end
 end
