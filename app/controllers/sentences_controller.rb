@@ -9,9 +9,13 @@ class SentencesController < ApplicationController
 
   def create
     @sentence = Sentence.new(sentence_params)
-    if having_word? && @sentence.save
-      redirect_to content_path(@sentence.content_id), notice: "例文の追加に成功しました"
-    elsif !@sentence.save || !having_word? || !@sentence.save && !having_word?
+    if create_having_word?
+      if @sentence.save
+        redirect_to content_path(@sentence.content_id), notice: "例文の追加に成功しました"
+      else
+        render :new
+      end
+    else
       flash.now[:alert] = "！必ず英語のテキストに#{@sentence.content.word}を含めてください！"
       render :new
     end
@@ -21,12 +25,15 @@ class SentencesController < ApplicationController
   end
 
   def update
-    if having_word? && @sentence.update(sentence_params)
-      redirect_to content_path(@sentence.content_id), notice: "例文の編集に成功しました"
-    elsif !@sentence.update(sentence_params) || !having_word? || !@sentence.update(sentence_params) && !having_word?
-      flash.now[:alert] = "！英語のテキストに#{@sentence.content.word}を含めてください！"
+    if update_having_word?
+      if @sentence.update(sentence_params) 
+        redirect_to content_path(@sentence.content_id), notice: "例文の編集に成功しました"
+      else
+        render :edit
+      end
+    else
+      flash.now[:alert] = "！必ず英語のテキストに#{@sentence.content.word}を含めてください！"
       render :edit
-      return
     end
   end
 
@@ -52,7 +59,11 @@ class SentencesController < ApplicationController
     redirect_to root_path unless @sentence.user.id == current_user.id
   end
 
-  def having_word?
+  def create_having_word?
     @sentence.english_text.include?(@sentence.content.word)
+  end
+
+  def update_having_word?
+    params.require(:sentence).permit(:english_text).to_s.include?("#{@sentence.content.word}")
   end
 end
