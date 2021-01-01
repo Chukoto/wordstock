@@ -9,5 +9,6 @@ class Content < ApplicationRecord
 
   belongs_to :user
   has_many :descriptions
+  has_many :contents_histories
 
 end

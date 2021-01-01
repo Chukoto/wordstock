@@ -6,4 +6,6 @@ class User < ApplicationRecord
 
   has_many :contents
   has_many :descriptions
+  has_many :sentences
+  has_many :contents_histories, through: :contents
 end
