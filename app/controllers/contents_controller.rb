@@ -31,6 +31,9 @@ class ContentsController < ApplicationController
 
   def update
     if @content.update(content_params)
+      new_history = @content.contents_histories.new
+      new_history.user_id = current_user.id
+      new_history.save
       redirect_to action: :show, notice: "単語の更新に成功しました"
     else
       render :edit
