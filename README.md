@@ -14,6 +14,7 @@
 - has_many :contents
 - has_many :descriptions
 - has_many :sentences
+- has_many :contents_histories
 
 ## contents テーブル
 
@@ -27,6 +28,7 @@
 - belongs_to :user
 - has_many :descriptions
 - has_many :sentences
+- has_many :contents_histories
 
 ## descriptions テーブル
 
@@ -51,11 +53,25 @@
 - belongs_to :user
 - belongs_to :content
 
+## contents_histories テーブル
+
+| Column             | Type       | Options                        |
+| ------------------ | ---------- | ------------------------------ |
+| user               | references | null: false, foreign_key: true |
+| content            | references | null: false, foreign_key: true |
+
+### Association
+
+- belongs_to :content
+- belongs_to :user
+
 ## diaries テーブル
 
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
 | title              | string  | null: false |
 | text               | string  | null: false |
+
+### Association
 
 - belongs_to :user
