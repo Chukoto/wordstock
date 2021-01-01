@@ -1,0 +1,2 @@
+class ContentsHistory < ApplicationRecord
+end
