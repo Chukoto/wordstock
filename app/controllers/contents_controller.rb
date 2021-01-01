@@ -12,6 +12,9 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     if @content.save
+      new_history = @content.contents_histories.new
+      new_history.user_id = current_user.id
+      new_history.save
       redirect_to contents_path, notice: "単語の追加に成功しました"
     else
       render :new
