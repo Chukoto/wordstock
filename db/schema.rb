@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_28_025655) do
+ActiveRecord::Schema.define(version: 2021_01_01_142131) do
 
   create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "part_id", null: false
@@ -20,6 +20,15 @@ ActiveRecord::Schema.define(version: 2020_12_28_025655) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["part_id", "word"], name: "index_contents_on_part_id_and_word", unique: true
     t.index ["user_id"], name: "index_contents_on_user_id"
+  end
+
+  create_table "contents_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.bigint "content_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["content_id"], name: "index_contents_histories_on_content_id"
+    t.index ["user_id"], name: "index_contents_histories_on_user_id"
   end
 
   create_table "descriptions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -56,6 +65,8 @@ ActiveRecord::Schema.define(version: 2020_12_28_025655) do
   end
 
   add_foreign_key "contents", "users"
+  add_foreign_key "contents_histories", "contents"
+  add_foreign_key "contents_histories", "users"
   add_foreign_key "descriptions", "contents"
   add_foreign_key "descriptions", "users"
   add_foreign_key "sentences", "contents"
