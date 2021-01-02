@@ -12,9 +12,7 @@ class ContentsController < ApplicationController
   def create
     @content = Content.new(content_params)
     if @content.save
-      new_history = @content.contents_histories.new
-      new_history.user_id = current_user.id
-      new_history.save
+      make_new_history
       redirect_to contents_path, notice: "単語の追加に成功しました"
     else
       render :new
@@ -31,9 +29,7 @@ class ContentsController < ApplicationController
 
   def update
     if @content.update(content_params)
-      new_history = @content.contents_histories.new
-      new_history.user_id = current_user.id
-      new_history.save
+      make_new_history
       redirect_to action: :show, notice: "単語の更新に成功しました"
     else
       render :edit
@@ -48,5 +44,12 @@ class ContentsController < ApplicationController
 
   def specified_content
     @content = Content.find(params[:id])
+  end
+
+  def make_new_history
+    new_history = @content.contents_histories.new
+    new_history.user_id = current_user.id
+    new_history.word = @content.word
+    new_history.save
   end
 end
