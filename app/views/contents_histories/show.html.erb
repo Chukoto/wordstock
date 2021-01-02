@@ -1,0 +1,13 @@
+<h1>単語"<%= "#{@content_word}" %>"の編集履歴一覧</h1>
+
+<% @contents_histories.each do |history| %>
+  <div>
+    <%= history.user.email %>
+  </div>
+  <div>
+    <%= history.created_at %>
+  </div>
+    <div>
+    <%= history.word %>
+  </div>
+<% end %>
