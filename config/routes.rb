@@ -5,5 +5,6 @@ Rails.application.routes.draw do
   resources :contents, only: [:index, :new, :create, :show, :edit, :update] do
     resources :descriptions, only: [:new, :create, :edit, :update, :destroy]
     resources :sentences, only: [:new, :create, :edit, :update, :destroy]
+    resources :contents_histories, only: [:show]
   end
 end
