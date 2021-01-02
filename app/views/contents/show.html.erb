@@ -12,11 +12,8 @@
 
 <div>
   <%= link_to "編集する", edit_content_path(@content.id) %>
+  <%= link_to "#{@content.word}の編集履歴を見る", content_contents_history_path(@content.id) %>
 <div>
-
-<div>
-  <%#= link_to "#{@content.word}の編集履歴を見る" %>
-</div>
 
 <h2>
   意味
