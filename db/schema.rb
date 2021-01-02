@@ -23,6 +23,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_142131) do
   end
 
   create_table "contents_histories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "word", null: false
     t.bigint "user_id", null: false
     t.bigint "content_id", null: false
     t.datetime "created_at", precision: 6, null: false
