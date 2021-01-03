@@ -2,6 +2,14 @@
   <%= flash[:notice] %>
 <% end %>
 
+<div>
+  メニュー
+</div>
+
+<div>
+  <%= link_to "日記をみる", diary_path(current_user.id) %>
+</div>
+
 <h1>
   WordStockへようこそ
 </h1>

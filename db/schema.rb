@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_01_01_142131) do
+ActiveRecord::Schema.define(version: 2021_01_03_142355) do
 
   create_table "contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "part_id", null: false
@@ -42,6 +42,15 @@ ActiveRecord::Schema.define(version: 2021_01_01_142131) do
     t.index ["user_id"], name: "index_descriptions_on_user_id"
   end
 
+  create_table "diaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "title", null: false
+    t.text "text", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_diaries_on_user_id"
+  end
+
   create_table "sentences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "english_text", null: false
     t.text "japanese_text", null: false
@@ -70,6 +79,7 @@ ActiveRecord::Schema.define(version: 2021_01_01_142131) do
   add_foreign_key "contents_histories", "users"
   add_foreign_key "descriptions", "contents"
   add_foreign_key "descriptions", "users"
+  add_foreign_key "diaries", "users"
   add_foreign_key "sentences", "contents"
   add_foreign_key "sentences", "users"
 end
