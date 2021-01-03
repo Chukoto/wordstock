@@ -71,7 +71,7 @@
 | Column             | Type    | Options     |
 | ------------------ | ------- | ----------- |
 | title              | string  | null: false |
-| text               | string  | null: false |
+| text               | text    | null: false |
 
 ### Association
 
