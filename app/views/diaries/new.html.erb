@@ -1,0 +1,27 @@
+<%= form_with model: @diary, url: diaries_path, method: :post, local: true do |f| %>
+
+  <h1>
+    日記
+  </h1>
+
+  <div>
+    タイトル
+  </div>
+
+  <div>
+    <%= f.text_field :title, class:"diary_title", placeholder: "English text only（必須）" %>
+  </div>
+
+  <div>
+    内容
+  </div>
+
+  <div>
+    <%= f.text_area :text, class:"diary_text", placeholder: "English text only（必須）", cols: 50, rows: 10 %>
+  </div>
+
+  </div>
+    <%= f.submit "作成する", class:"post" %>
+  </div>
+
+<% end %>
