@@ -1,1 +1,35 @@
-<%= link_to "日記を作成する", new_diary_path %>
+<h1>
+  あなたの日記
+</h1>
+
+<div>
+  <%= link_to "日記を作成する", new_diary_path %>
+</div>
+
+<% if @diaries.exists? %>
+
+  <% @diaries.each do |diary|  %>
+
+    -----------------------
+    <div>
+      <div>
+        <%= diary.created_at%>
+      </div>
+
+      <div>
+        タイトル
+        <%= diary.title %>
+      </div>
+
+      <div>
+        内容
+        <%= diary.text %>
+      </div>
+    </div>
+  <% end %>
+
+<% else %>
+
+  表示できる日記がありません。
+
+<% end %>
