@@ -1,5 +1,10 @@
 class DiariesController < ApplicationController
+  def index
+    @diaries = Diary.order("created_at DESC")
+  end
+  
   def show
+    @diaries = current_user.diary.order("created_at DESC")
   end
 
   def new
