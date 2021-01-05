@@ -1,6 +1,6 @@
 <%= form_with model: @content, url: content_path, method: :patch, local: true do |f| %>
 
-<%= render 'shared/error_messages', model: f.object %>
+  <%= render 'shared/error_messages', model: f.object %>
 
   <div>
     固有名詞の追加は禁止です。

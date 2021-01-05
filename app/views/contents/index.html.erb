@@ -7,8 +7,15 @@
 </div>
 
 <div>
-  <%= link_to "日記をみる", diary_path(current_user.id) %>
-</div>
+  <%= link_to "みんなの日記をみる", diaries_path %>
+<div>
+
+<% if user_signed_in? %>
+  <div>
+    <%= link_to "自分の日記をみる", diary_path(current_user.id) %>
+  </div>
+<% end %>
+
 
 <h1>
   WordStockへようこそ
