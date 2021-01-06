@@ -26,6 +26,12 @@
         <%= diary.text %>
       </div>
     </div>
+
+    <% if user_signed_in? && current_user.id == diary.user_id %>
+      <div>
+        <%= link_to "編集する", edit_diary_path(diary.id) %>
+      </div>
+    <% end %>
   <% end %>
 
 <% else %>
