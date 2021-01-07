@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2021_01_03_142355) do
 
   create_table "sentences", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "english_text", null: false
-    t.text "japanese_text", null: false
+    t.text "japanese_text"
     t.bigint "user_id", null: false
     t.bigint "content_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 2021_01_03_142355) do
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "nickname", null: false
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
