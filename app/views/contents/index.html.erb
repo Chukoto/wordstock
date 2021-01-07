@@ -1,32 +1,13 @@
+<%= render "shared/header" %>
+
+
 <% if flash[:notice] %>
   <%= flash[:notice] %>
 <% end %>
 
-<div>
-  メニュー
-</div>
-
-<div>
-  <%= link_to "みんなの日記をみる", diaries_path %>
-<div>
-
-<% if user_signed_in? %>
-  <div>
-    <%= link_to "自分の日記をみる", diary_path(current_user.id) %>
-  </div>
-<% end %>
-
-
 <h1>
   WordStockへようこそ
 </h1>
-
-<div>
-  <%= link_to "新規登録", new_user_registration_path %>
-  <%= link_to "ログイン", new_user_session_path %>
-  <%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post %>
-  <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
-</div>
 
 <h2>
   WordStockとは
