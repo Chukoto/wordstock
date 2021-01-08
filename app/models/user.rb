@@ -11,6 +11,7 @@ class User < ApplicationRecord
     end
   end
 
+  has_one :profile
   has_many :diary
   has_many :contents
   has_many :descriptions
