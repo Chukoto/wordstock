@@ -10,6 +10,7 @@
 
 ### Association
 
+- has_one: profile
 - has_many :diaries
 - has_many :contents
 - has_many :descriptions
@@ -71,6 +72,17 @@
 | Column             | Type       | Options                           |
 | ------------------ | ---------- | --------------------------------- |
 | title              | string     | null: false                       |
+| text               | text       | null: false                       |
+| user               | references | null: false, foreign_key: true    |
+
+### Association
+
+- belongs_to :user
+
+## profiles テーブル
+
+| Column             | Type       | Options                           |
+| ------------------ | ---------- | --------------------------------- |
 | text               | text       | null: false                       |
 | user               | references | null: false, foreign_key: true    |
 
