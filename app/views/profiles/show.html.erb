@@ -1,0 +1,17 @@
+<% if user_signed_in? && current_user.id == @user.id %>
+  <div>
+    あなたのプロフィール
+  </div>
+
+  <% if @profile == nil %>
+    <div>
+      <%= link_to "作成する", new_profile_path %>
+    </div>
+  <% else %>
+    <div>
+      <%= link_to "編集する", "#" %>
+    </div>
+  <% end %>
+<% else %>
+  <%= "#{@user.nickname}さんのプロフィール" %>
+<% end %>
