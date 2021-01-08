@@ -1,0 +1,13 @@
+あなたのプロフィール文
+
+<%= form_with model: @profile, url: profiles_path, method: :post, local: true do |f| %>
+
+<%= render 'shared/error_messages', model: f.object %>
+
+<%= f.text_area :text, class:"text", id:"text_id", placeholder:"プロフィールを入力してください（未記入可）", rows: "15", cols: "80" %>
+
+<div>
+  <%= f.submit "作成する", class: "submit-btn" %>
+</div>
+
+<% end %>
