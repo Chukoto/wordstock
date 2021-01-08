@@ -2,11 +2,15 @@
 
 ## users テーブル
 
-| Column             | Type    | Options     |
-| ------------------ | ------- | ----------- |
-| nickname           | string  | null: false |
-| email              | string  | null: false |
-| encrypted_password | string  | null: false |
+| Column             | Type     | Options     |
+| ------------------ | -------- | ----------- |
+| nickname           | string   | null: false |
+| email              | string   | null: false |
+| encrypted_password | string   | null: false |
+| content_count      | integer  | null: true  |
+| description_count  | integer  | null: true  |
+| sentence_count     | integer  | null: true  |
+| diary_count        | integer  | null: true  |
 
 ### Association
 
@@ -83,7 +87,7 @@
 
 | Column             | Type       | Options                           |
 | ------------------ | ---------- | --------------------------------- |
-| text               | text       | null: true                        |
+| text               | text       | null: false                       |
 | user               | references | null: false, foreign_key: true    |
 
 ### Association
