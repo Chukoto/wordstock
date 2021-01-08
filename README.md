@@ -83,7 +83,7 @@
 
 | Column             | Type       | Options                           |
 | ------------------ | ---------- | --------------------------------- |
-| text               | text       | null: false                       |
+| text               | text       | null: true                        |
 | user               | references | null: false, foreign_key: true    |
 
 ### Association
