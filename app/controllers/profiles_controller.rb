@@ -10,6 +10,11 @@ class ProfilesController < ApplicationController
 
   def create
     @profile = Profile.new(profile_params)
+    if @profile.save
+      redirect_to profile_path(current_user.id)
+    else
+      render root_path
+    end
   end
 
   private
