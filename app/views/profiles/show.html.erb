@@ -5,13 +5,20 @@
 
   <% if @profile == nil %>
     <div>
-      <%= link_to "作成する", new_profile_path %>
+      <%= link_to "プロフィール文を作成する", new_profile_path %>
     </div>
   <% else %>
     <div>
       <%= link_to "編集する", "#" %>
     </div>
+    <b>
+      プロフィール文
+    </b>
+    <div>
+      <%= @profile.text %>
+    </div>
   <% end %>
+
 <% else %>
   <%= "#{@user.nickname}さんのプロフィール" %>
 <% end %>
