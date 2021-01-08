@@ -19,7 +19,7 @@
 
       <ul class="lists-right">
         <% if user_signed_in? %>
-          <li><%= "#{current_user.nickname}でログイン中" %></li>
+          <li><%= "#{current_user.nickname}" %></li>
           <li><%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "logout" %></li>
         <% else %>
           <li><%= link_to "ゲストログイン（閲覧用）", users_guest_sign_in_path, method: :post, class: "login" %></li>
