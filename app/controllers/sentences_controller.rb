@@ -11,6 +11,7 @@ class SentencesController < ApplicationController
     @sentence = Sentence.new(sentence_params)
     if create_having_word?
       if @sentence.save
+        make_count
         redirect_to content_path(@sentence.content_id), notice: "例文の追加に成功しました"
       else
         render :new
@@ -65,5 +66,10 @@ class SentencesController < ApplicationController
 
   def update_having_word?
     params.require(:sentence).permit(:english_text).to_s.include?("#{@sentence.content.word}")
+  end
+
+  def make_count
+    sum = current_user.sentence_count.to_i + 1
+    current_user.update_column(:sentence_count, sum)
   end
 end

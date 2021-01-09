@@ -11,6 +11,8 @@ class User < ApplicationRecord
     end
   end
 
+  validates :nickname, presence: true
+
   has_one :profile
   has_many :diary
   has_many :contents

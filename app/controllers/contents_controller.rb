@@ -13,6 +13,7 @@ class ContentsController < ApplicationController
     @content = Content.new(content_params)
     if @content.save
       make_new_history
+      make_count
       redirect_to contents_path, notice: "単語の追加に成功しました"
     else
       render :new
@@ -51,5 +52,10 @@ class ContentsController < ApplicationController
     new_history.user_id = current_user.id
     new_history.word = @content.word
     new_history.save
+  end
+
+  def make_count
+    sum = current_user.content_count.to_i + 1
+    current_user.update_column(:content_count, sum)
   end
 end

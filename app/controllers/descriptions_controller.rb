@@ -10,6 +10,7 @@ class DescriptionsController < ApplicationController
   def create
     @description = Description.new(description_params)
     if @description.save
+      make_count
       redirect_to content_path(@description.content_id), notice: "意味の追加に成功しました"
     else
       render :new
@@ -47,5 +48,9 @@ class DescriptionsController < ApplicationController
 
   def specified_user
     redirect_to root_path unless @description.user.id == current_user.id 
+  end
+  def make_count
+    sum = current_user.description_count.to_i + 1
+    current_user.update_column(:description_count, sum)
   end
 end
