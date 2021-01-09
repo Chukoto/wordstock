@@ -7,6 +7,9 @@
     <div>
       <%= link_to "プロフィール文を作成する", new_profile_path %>
     </div>
+    <b>
+      プロフィール文がありません。
+    </b>
   <% else %>
     <div>
       <%= link_to "編集する", "#" %>
@@ -16,6 +19,18 @@
     </b>
     <div>
       <%= simple_format(@profile.text) %>
+    </div>
+    <div>
+      <%= "単語投稿回数：" %><b><%= "#{@profile.user.content_count}回" %></b>
+    </div>
+    <div>
+      <%= "意味投稿回数：" %><b><%= "#{@profile.user.description_count}回" %></b>
+    </div>
+    <div>
+      <%= "例文投稿回数：" %><b><%= "#{@profile.user.sentence_count}回" %></b>
+    </div>
+    <div>
+      <%= "日記投稿回数：" %><b><%= "#{@profile.user.diary_count}回" %></b>
     </div>
   <% end %>
 
