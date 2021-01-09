@@ -18,6 +18,7 @@ class DiariesController < ApplicationController
   def create
     @diary = Diary.new(diary_params)
     if @diary.save
+      make_count
       redirect_to diary_path(current_user.id)
     else
       render :new
@@ -47,5 +48,10 @@ class DiariesController < ApplicationController
 
   def specified_user
     redirect_to root_path unless @diary.user.id == current_user.id
+  end
+
+  def make_count
+    sum = current_user.diary_count.to_i + 1
+    current_user.update_column(:diary_count, sum)
   end
 end
