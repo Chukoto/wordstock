@@ -1,4 +1,8 @@
 class ProfilesController < ApplicationController
+  before_action :authenticate_user!, only: [:new, :edit]
+  before_action :specified_profile, only: [:edit, :update]
+  before_action :specified_user, only: [:edit]
+
   def show
     @user = User.find(params[:id])
     @profile = Profile.find_by(user_id: params[:id])
@@ -17,10 +21,29 @@ class ProfilesController < ApplicationController
     end
   end
 
+  def edit 
+  end
+
+  def update
+    if @profile.update(profile_params)
+      redirect_to profile_path(current_user.id)
+    else
+      render :edit
+    end
+  end
+
   private
 
   def profile_params
     params.require(:profile).permit(:text).merge(user_id: current_user.id)
+  end
+
+  def specified_profile
+    @profile = Profile.find_by(user_id: params[:id])
+  end
+
+  def specified_user
+    redirect_to root_path unless @profile.user.id == current_user.id
   end
 
 end
