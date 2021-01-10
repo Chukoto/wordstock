@@ -1,5 +1,5 @@
 class DiariesController < ApplicationController
-  before_action :authenticate_user!, only: [:edit]
+  before_action :authenticate_user!, only: [:new, :edit]
   before_action :specified_diary, only: [:edit, :update]
   before_action :specified_user, only: [:edit]
 
