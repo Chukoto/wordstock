@@ -14,7 +14,7 @@ class ContentsController < ApplicationController
     if @content.save
       make_new_history
       make_count
-      redirect_to contents_path, notice: "単語の追加に成功しました"
+      redirect_to content_path(@content.id), notice: "単語の追加に成功しました"
     else
       render :new
     end
@@ -31,7 +31,7 @@ class ContentsController < ApplicationController
   def update
     if @content.update(content_params)
       make_new_history
-      redirect_to action: :show, notice: "単語の更新に成功しました"
+      redirect_to content_path(@content.id), notice: "単語の更新に成功しました"
     else
       render :edit
     end
