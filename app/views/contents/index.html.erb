@@ -21,13 +21,15 @@
   <br>他のユーザーの例文が不自然であると感じたらその例文に対してフィードバックしましょう。
 </div>
 
-<div>
-  <%= link_to '単語追加', new_content_path %>
-<div>
+<% if user_signed_in? %>
+  <div>
+    <%= link_to '単語追加', new_content_path %>
+  <div>
+<% end %>
 
 <%# 単語一覧 %>
 <div>
-  <div>単語一覧</div> 
+  <h2>単語一覧</h2> 
   <%# 部分テンプレートで単語一覧を表示する %>
   <%= render partial: 'content', collection: @contents %>
 </div>
@@ -43,7 +45,7 @@
       第
       <%= i %>
       位
-     <%= "#{content.nickname}さん #{content.content_count.to_i}回" %>
+      <%= link_to "#{content.nickname}さん", profile_path(content.id) %> <%= "#{content.content_count.to_i}回" %>
     </div>
   <% end %>
 </div>
@@ -55,7 +57,7 @@
       第
       <%= i %>
       位
-      <%= "#{description.nickname}さん #{description.description_count.to_i}回" %>
+      <%= link_to "#{description.nickname}さん", profile_path(description.id) %><%= "#{description.description_count.to_i}回" %>
     </div>
   <% end %>
 </div>
@@ -67,7 +69,7 @@
       第
       <%= i %>
       位
-      <%= "#{sentence.nickname}さん #{sentence.sentence_count.to_i}回" %>
+      <%= link_to "#{sentence.nickname}さん", profile_path(sentence.id) %><%= "#{sentence.sentence_count.to_i}回" %>
     </div>
   <% end %>
 </div>
@@ -79,7 +81,7 @@
       第
       <%= i %>
       位
-      <%= "#{diary.nickname}さん #{diary.diary_count.to_i}回"%>
+      <%= link_to "#{diary.nickname}さん", profile_path(diary.id) %><%= "#{diary.diary_count.to_i}回" %>
     </div>
   <% end %>
 </div>
