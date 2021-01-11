@@ -23,11 +23,11 @@
   意味
 </h2>
 
-<% if @sentences.present? %>
+<% if @descriptions.present? %>
   <div>
     <% @descriptions.each do |description| %>
       <br>-----------------------------------------<br>
-      <%= link_to "#{description.user.nickname}", profile_path(description.user.id) %>
+      <%= link_to "#{description.user.nickname}さん", profile_path(description.user.id) %>
       <div>
       <%= simple_format(description.english_text) %>
       <% if user_signed_in? && description.user.id == current_user.id %>
@@ -38,7 +38,7 @@
   </div>
 <% else %>
   <div>
-    表示できる例文がありません
+    意味のデータが存在しません
   </div>
 <% end %>
 
@@ -81,7 +81,7 @@
   </div>
 <% else %>
   <div>
-    表示できる例文がありません
+    例文のデータが存在しません
   </div>
 <% end %>
 
