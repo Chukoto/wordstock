@@ -10,56 +10,83 @@
   <%= @content.part.name %>
 </div>
 
+<% if user_signed_in? %>
+  <div>
+    <%= link_to "編集する", edit_content_path(@content.id) %>
+  </div>
+<% end %>
 <div>
-  <%= link_to "編集する", edit_content_path(@content.id) %>
   <%= link_to "#{@content.word}の編集履歴を見る", content_contents_history_path(@content.id) %>
-<div>
+</div>
 
 <h2>
   意味
 </h2>
 
-<div>
-  <% @descriptions.each do |description| %>
-    <%= simple_format(description.english_text) %>
-    <% if user_signed_in? && description.user.id == current_user.id %>
-      <%= link_to "編集する", edit_content_description_path(@content.id, description.id) %>
-      <%= link_to "削除する", content_description_path(@content.id, description.id), method: :delete %>
+<% if @sentences.present? %>
+  <div>
+    <% @descriptions.each do |description| %>
+      <br>-----------------------------------------<br>
+      <%= link_to "#{description.user.nickname}", profile_path(description.user.id) %>
+      <div>
+      <%= simple_format(description.english_text) %>
+      <% if user_signed_in? && description.user.id == current_user.id %>
+        <%= link_to "編集する", edit_content_description_path(@content.id, description.id) %>
+        <%= link_to "削除する", content_description_path(@content.id, description.id), method: :delete %>
+      <% end %>
     <% end %>
-  <% end %>
-</div>
+  </div>
+<% else %>
+  <div>
+    表示できる例文がありません
+  </div>
+<% end %>
 
-<div>
-  <%= link_to "意味を追加する", new_content_description_path(@content.id) %>
-</div>
+<% if user_signed_in? %>
+  <div>
+    <%= link_to "意味を追加する", new_content_description_path(@content.id) %>
+  </div>
+<% end %>
 
 <h2>
   例文
 </h2>
 
-<div>
-  <% @sentences.each do |sentence| %>
-    <br>-----------------------------------------<br>
-    <%= "#{sentence.user.email}" %>
-    <b>英語</b>
-    <div>
-      <%= simple_format(sentence.english_text) %>
-    </div>
-
-    <% if sentence.japanese_text.present? %>
-      <b>日本語</b>
+<% if @sentences.present? %>
+  <div>
+    <% @sentences.each do |sentence| %>
+      <br>-----------------------------------------<br>
+      <%= link_to "#{sentence.user.nickname}", profile_path(sentence.user.id) %>
       <div>
-        <%= simple_format(sentence.japanese_text) %>
+        <b>英語</b>
+        <div>
+          <%= simple_format(sentence.english_text) %>
+        </div>
       </div>
-    <% end %>
 
-    <% if user_signed_in? && sentence.user.id == current_user.id %>
-      <%= link_to "編集する", edit_content_sentence_path(@content.id, sentence.id) %>
-      <%= link_to "削除する", content_sentence_path(@content.id, sentence.id), method: :delete %>
-    <% end %>
-  <% end %>
-</div>
+      <% if sentence.japanese_text.present? %>
+        <div>
+          <b>日本語</b>
+          <div>
+            <%= simple_format(sentence.japanese_text) %>
+          </div>
+        </div>
+      <% end %>
 
-<div>
-  <%= link_to "例文を追加する", new_content_sentence_path(@content.id) %>
-</div>
+      <% if user_signed_in? && sentence.user.id == current_user.id %>
+        <%= link_to "編集する", edit_content_sentence_path(@content.id, sentence.id) %>
+        <%= link_to "削除する", content_sentence_path(@content.id, sentence.id), method: :delete %>
+      <% end %>
+    <% end %>
+  </div>
+<% else %>
+  <div>
+    表示できる例文がありません
+  </div>
+<% end %>
+
+<% if user_signed_in? %>
+  <div>
+    <%= link_to "例文を追加する", new_content_sentence_path(@content.id) %>
+  </div>
+<% end %>
