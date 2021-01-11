@@ -2,7 +2,7 @@
 
 <% @contents_histories.each do |history| %>
   <div>
-    <%= history.user.email %>
+    <%= link_to "#{history.user.nickname}さん", profile_path(history.user.id) %>
   </div>
   <div>
     <%= history.created_at %>
