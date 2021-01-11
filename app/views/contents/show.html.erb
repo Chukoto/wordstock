@@ -10,10 +10,14 @@
   <%= @content.part.name %>
 </div>
 
+<% if user_signed_in? %>
+  <div>
+    <%= link_to "編集する", edit_content_path(@content.id) %>
+  </div>
+<% end %>
 <div>
-  <%= link_to "編集する", edit_content_path(@content.id) %>
   <%= link_to "#{@content.word}の編集履歴を見る", content_contents_history_path(@content.id) %>
-<div>
+</div>
 
 <h2>
   意味
@@ -38,33 +42,34 @@
   </div>
 <% end %>
 
-<div>
-  <%= link_to "意味を追加する", new_content_description_path(@content.id) %>
-</div>
+<% if user_signed_in? %>
+  <div>
+    <%= link_to "意味を追加する", new_content_description_path(@content.id) %>
+  </div>
+<% end %>
 
 <h2>
   例文
 </h2>
 
-
-<% if @descriptions.present? %>
+<% if @sentences.present? %>
   <div>
     <% @sentences.each do |sentence| %>
       <br>-----------------------------------------<br>
-      <%= link_to "#{sentence.user.nickname}さん", profile_path(sentence.user.id) %>
+      <%= link_to "#{sentence.user.nickname}", profile_path(sentence.user.id) %>
       <div>
         <b>英語</b>
-      </div>
-      <div>
-        <%= simple_format(sentence.english_text) %>
+        <div>
+          <%= simple_format(sentence.english_text) %>
+        </div>
       </div>
 
       <% if sentence.japanese_text.present? %>
         <div>
           <b>日本語</b>
-        </div>
-        <div>
-          <%= simple_format(sentence.japanese_text) %>
+          <div>
+            <%= simple_format(sentence.japanese_text) %>
+          </div>
         </div>
       <% end %>
 
@@ -80,6 +85,8 @@
   </div>
 <% end %>
 
-<div>
-  <%= link_to "例文を追加する", new_content_sentence_path(@content.id) %>
-</div>
+<% if user_signed_in? %>
+  <div>
+    <%= link_to "例文を追加する", new_content_sentence_path(@content.id) %>
+  </div>
+<% end %>
