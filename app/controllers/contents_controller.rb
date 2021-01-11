@@ -3,6 +3,10 @@ class ContentsController < ApplicationController
 
   def index
     @contents = Content.all
+    @content_post_ranking = User.order('content_count desc').limit(3)
+    @description_post_ranking = User.order('description_count desc').limit(3)
+    @sentence_post_ranking = User.order('sentence_count desc').limit(3)
+    @diary_post_ranking = User.order('diary_count desc').limit(3)
   end
 
   def new
