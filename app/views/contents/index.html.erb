@@ -31,3 +31,57 @@
   <%# 部分テンプレートで単語一覧を表示する %>
   <%= render partial: 'content', collection: @contents %>
 </div>
+
+<h2>
+  ランキング
+</h2>
+
+<div>
+  <h3>単語投稿回数</h3>
+  <% @content_post_ranking.each.with_index(1) do |content, i| %>
+    <div>
+      第
+      <%= i %>
+      位
+     <%= "#{content.nickname}さん #{content.content_count.to_i}回" %>
+    </div>
+  <% end %>
+</div>
+--
+<div>
+  <h3>意味投稿回数</h3>
+  <% @description_post_ranking.each.with_index(1) do |description, i| %>
+    <div>
+      第
+      <%= i %>
+      位
+      <%= "#{description.nickname}さん #{description.description_count.to_i}回" %>
+    </div>
+  <% end %>
+</div>
+--
+<div>
+  <h3>例文投稿回数</h3>
+  <% @sentence_post_ranking.each.with_index(1) do |sentence, i| %>
+    <div>
+      第
+      <%= i %>
+      位
+      <%= "#{sentence.nickname}さん #{sentence.sentence_count.to_i}回" %>
+    </div>
+  <% end %>
+</div>
+--
+<div>
+  <h3>日記投稿回数</h3>
+  <% @diary_post_ranking.each.with_index(1) do |diary, i| %>
+    <div>
+      第
+      <%= i %>
+      位
+      <%= "#{diary.nickname}さん #{diary.diary_count.to_i}回"%>
+    </div>
+  <% end %>
+</div>
+
+
