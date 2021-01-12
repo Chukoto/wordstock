@@ -1,3 +1,11 @@
+/* index */
+
+.main {
+  margin: 5vh 10vw 5vh 10vw;
+  display:flex;
+  justify-content: space-between;
+}
+
 .description-group {
   display: flex;
   flex-wrap: wrap;
@@ -44,4 +52,16 @@
 .description-bottom {
   display: flex;
   justify-content: flex-end;
+}
+
+/* //index */
+
+/* new */
+.new-content-main {
+  margin: 5vh 10vw 5vh 10vw;
+  text-align: center;
+}
+
+.test {
+  font-size: 25px;
 }
