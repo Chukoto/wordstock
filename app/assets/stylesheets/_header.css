@@ -1,6 +1,6 @@
 .header-frame {
   margin: 2vh 0 2vh 0;
-  border-bottom: 1px solid #888;
+  border-bottom: 1px solid #bbbbbb;;
 }
 
 .top_header {
@@ -27,14 +27,13 @@
 }
 
 .search-form {
-  width: 65vw;
+  width: 50vw;
   height: 5vh;
   display: flex;
   margin-bottom: 5px;
 }
 
 .search-form>.search-input {
-  margin-left: 59vh;
   width: 100%;
   height: 5vh;
   padding-left: 10px;
