@@ -1,90 +1,73 @@
 <%= render "shared/header" %>
 
+<div class="main">
+  <div class="left-content">
+    <div class="contents">
+      <% if flash[:notice] %>
+        <%= flash[:notice] %>
+      <% end %>
 
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
-<% end %>
+      <%# 単語一覧 %>
+      <div>
+        <h2>
+          単語一覧
+        </h2>
+        <% if user_signed_in? %>
+          <div class="position-center">
+            <%= link_to '単語追加', new_content_path, class:"new-btn" %>
+          </div>
+        <% end %>
+        <div class="description-group">
+          <%= content_lists(@contents) %>
+        </div>
+      </div>
+    </div>
+  </div>
 
-<h1>
-  WordStockへようこそ
-</h1>
 
-<h2>
-  WordStockとは
-</h2>
+  <div class="right-content">
+    <div class="ranking-group">
+      <h2>
+        ランキング
+      </h2>
 
-<div>
-  皆さんで作り上げていく辞書のアプリです。アプリ作成時の単語登録数は0からスタートです。
-  <br>追加されていない単語を追加していきましょう。（既に存在する単語は追加できません。）
-  <br>また、単語に関する例文を考えて投稿してください。文法は間違えていても構いません。とにかく能動的に学習することです。
-  <br>例文は他のユーザーからフィードバックをもらうことができます。
-  <br>他のユーザーの例文が不自然であると感じたらその例文に対してフィードバックしましょう。
-</div>
-
-<% if user_signed_in? %>
-  <div>
-    <%= link_to '単語追加', new_content_path %>
-  <div>
-<% end %>
-
-<%# 単語一覧 %>
-<div>
-  <h2>単語一覧</h2> 
-  <div class="contents row">
-    <%= content_lists(@contents) %>
+      <h3 class="contents-ranking">単語投稿回数</h3>
+      <% @content_post_ranking.each.with_index(1) do |content, i| %>
+        <div class="rank">
+          第
+          <%= i %>
+          位
+          <%= link_to "#{content.nickname}さん", profile_path(content.id), class: "ranking-nickname" %> <%= "#{content.content_count.to_i}回" %>
+        </div>
+      <% end %>
+      <h3 class="descriptions-ranking">意味投稿回数</h3>
+      <% @description_post_ranking.each.with_index(1) do |description, i| %>
+        <div class="rank">
+          第
+          <%= i %>
+          位
+          <%= link_to "#{description.nickname}さん", profile_path(description.id), class: "ranking-nickname" %><%= "#{description.description_count.to_i}回" %>
+        </div>
+      <% end %>
+      <h3 class="sentences-ranking">例文投稿回数</h3>
+      <% @sentence_post_ranking.each.with_index(1) do |sentence, i| %>
+        <div class="rank">
+          第
+          <%= i %>
+          位
+          <%= link_to "#{sentence.nickname}さん", profile_path(sentence.id), class: "ranking-nickname" %><%= "#{sentence.sentence_count.to_i}回" %>
+        </div>
+      <% end %>
+      <h3 class="diaries-ranking">日記投稿回数</h3>
+      <% @diary_post_ranking.each.with_index(1) do |diary, i| %>
+        <div class="rank">
+          第
+          <%= i %>
+          位
+          <%= link_to "#{diary.nickname}さん", profile_path(diary.id), class: "ranking-nickname" %><%= "#{diary.diary_count.to_i}回" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
-
-<h2>
-  ランキング
-</h2>
-
-<div>
-  <h3>単語投稿回数</h3>
-  <% @content_post_ranking.each.with_index(1) do |content, i| %>
-    <div>
-      第
-      <%= i %>
-      位
-      <%= link_to "#{content.nickname}さん", profile_path(content.id) %> <%= "#{content.content_count.to_i}回" %>
-    </div>
-  <% end %>
-</div>
---
-<div>
-  <h3>意味投稿回数</h3>
-  <% @description_post_ranking.each.with_index(1) do |description, i| %>
-    <div>
-      第
-      <%= i %>
-      位
-      <%= link_to "#{description.nickname}さん", profile_path(description.id) %><%= "#{description.description_count.to_i}回" %>
-    </div>
-  <% end %>
-</div>
---
-<div>
-  <h3>例文投稿回数</h3>
-  <% @sentence_post_ranking.each.with_index(1) do |sentence, i| %>
-    <div>
-      第
-      <%= i %>
-      位
-      <%= link_to "#{sentence.nickname}さん", profile_path(sentence.id) %><%= "#{sentence.sentence_count.to_i}回" %>
-    </div>
-  <% end %>
-</div>
---
-<div>
-  <h3>日記投稿回数</h3>
-  <% @diary_post_ranking.each.with_index(1) do |diary, i| %>
-    <div>
-      第
-      <%= i %>
-      位
-      <%= link_to "#{diary.nickname}さん", profile_path(diary.id) %><%= "#{diary.diary_count.to_i}回" %>
-    </div>
-  <% end %>
-</div>
-
 
