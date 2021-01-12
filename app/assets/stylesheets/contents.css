@@ -1,0 +1,47 @@
+.description-group {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.description {
+  margin: 10px;
+  width: 30%;
+}
+
+.ranking-group {
+  background: linear-gradient(to bottom left,#98f735, #3598f7);
+  border: 1px solid #bbbbbb;
+  text-align: center;
+  padding: 5vh 5vw;
+  width: 25vw;
+  margin-left: 3vw;
+}
+
+.contents-ranking {
+  color: black;
+}
+
+.rank {
+  font-size: 14px;
+}
+
+.ranking-nickname {
+  color: #3598f7;
+  font-weight: bolder;
+}
+
+.ranking-nickname:hover {
+  color: white;
+  text-decoration: none;
+}
+
+
+
+.description {
+  border-bottom: 1px solid #bbbbbb;;
+}
+
+.description-bottom {
+  display: flex;
+  justify-content: flex-end;
+}
