@@ -1,0 +1,9 @@
+<%= render 'shared/header'%>
+
+<h1><%= "'#{params[:keyword]}'の検索結果" %></h1>
+
+<div class="contents row">
+  <% @contents.each do |content| %>
+    <%= render partial: "search_result", locals: { contents: content } %>
+  <% end %>
+</div>

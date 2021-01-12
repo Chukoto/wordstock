@@ -11,4 +11,12 @@ class Content < ApplicationRecord
   has_many :descriptions
   has_many :contents_histories
 
+  def self.search(search)
+    if search != ""
+      Content.where('word LIKE(?)', "%#{search}%")
+    else
+      Content.all
+    end
+  end
+
 end

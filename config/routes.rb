@@ -15,5 +15,8 @@ Rails.application.routes.draw do
     resources :descriptions, only: [:new, :create, :edit, :update, :destroy]
     resources :sentences, only: [:new, :create, :edit, :update, :destroy]
     resources :contents_histories, only: [:show]
+    collection do
+      get 'search'
+    end
   end
 end

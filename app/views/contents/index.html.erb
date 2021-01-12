@@ -30,8 +30,9 @@
 <%# 単語一覧 %>
 <div>
   <h2>単語一覧</h2> 
-  <%# 部分テンプレートで単語一覧を表示する %>
-  <%= render partial: 'content', collection: @contents %>
+  <div class="contents row">
+    <%= content_lists(@contents) %>
+  </div>
 </div>
 
 <h2>
