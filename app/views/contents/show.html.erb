@@ -7,7 +7,7 @@
 <div class="show-content-main">
   <% if user_signed_in? %>
     <div class="position-right">
-      <%= link_to "単語を編集する", edit_content_path(@content.id), class: "edit-btn" %>
+      <%= link_to "単語を編集", edit_content_path(@content.id), class: "edit-btn" %>
     </div>
   <% end %>
   <div class="show-content-top">
@@ -58,8 +58,8 @@
                 <%= simple_format(description.english_text) %>
               </div>
               <% if user_signed_in? && description.user.id == current_user.id %>
-                <%= link_to "編集する", edit_content_description_path(@content.id, description.id), class: "edit-btn" %>
-                <%= link_to "削除する", content_description_path(@content.id, description.id), method: :delete, class: "delete-btn" %>
+                <%= link_to "編集", edit_content_description_path(@content.id, description.id), class: "edit-btn" %>
+                <%= link_to "削除", content_description_path(@content.id, description.id), method: :delete, class: "delete-btn" %>
               <% end %>
             </div>
           <% end %>
@@ -103,8 +103,8 @@
             <% end %>
 
             <% if user_signed_in? && sentence.user.id == current_user.id %>
-              <%= link_to "編集する", edit_content_sentence_path(@content.id, sentence.id),class: "edit-btn" %>
-              <%= link_to "削除する", content_sentence_path(@content.id, sentence.id), method: :delete, class: "delete-btn" %>
+              <%= link_to "編集", edit_content_sentence_path(@content.id, sentence.id),class: "edit-btn" %>
+              <%= link_to "削除", content_sentence_path(@content.id, sentence.id), method: :delete, class: "delete-btn" %>
             <% end %>
           </div>
         <% end %>

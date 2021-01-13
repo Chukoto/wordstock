@@ -3,9 +3,9 @@
 <%= form_with model: @content, url: contents_path, method: :post, local: true do |f| %>
 
   <div class="new-show-content-main">
-    <h2>
+    <h1>
       単語を追加
-    </h2>
+    </h1>
 
     <div class="error-messages">
       <%= render 'shared/error_messages', model: f.object %>
