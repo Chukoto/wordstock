@@ -1,92 +1,118 @@
+<%= render "shared/header" %>
+
 <% if flash[:notice] %>
   <%= flash[:notice] %>
 <% end %>
 
-<h1>
-  <%= @content.word %>
-</h1>
-
-<div>
-  <%= @content.part.name %>
-</div>
-
-<% if user_signed_in? %>
-  <div>
-    <%= link_to "編集する", edit_content_path(@content.id) %>
-  </div>
-<% end %>
-<div>
-  <%= link_to "#{@content.word}の編集履歴を見る", content_contents_history_path(@content.id) %>
-</div>
-
-<h2>
-  意味
-</h2>
-
-<% if @descriptions.present? %>
-  <div>
-    <% @descriptions.each do |description| %>
-      <br>-----------------------------------------<br>
-      <%= link_to "#{description.user.nickname}さん", profile_path(description.user.id) %>
-      <div>
-      <%= simple_format(description.english_text) %>
-      <% if user_signed_in? && description.user.id == current_user.id %>
-        <%= link_to "編集する", edit_content_description_path(@content.id, description.id) %>
-        <%= link_to "削除する", content_description_path(@content.id, description.id), method: :delete %>
-      <% end %>
-    <% end %>
-  </div>
-<% else %>
-  <div>
-    意味のデータが存在しません
-  </div>
-<% end %>
-
-<% if user_signed_in? %>
-  <div>
-    <%= link_to "意味を追加する", new_content_description_path(@content.id) %>
-  </div>
-<% end %>
-
-<h2>
-  例文
-</h2>
-
-<% if @sentences.present? %>
-  <div>
-    <% @sentences.each do |sentence| %>
-      <br>-----------------------------------------<br>
-      <%= link_to "#{sentence.user.nickname}", profile_path(sentence.user.id) %>
-      <div>
-        <b>英語</b>
-        <div>
-          <%= simple_format(sentence.english_text) %>
-        </div>
+<div class="show-content-main">
+  <% if user_signed_in? %>
+    <div class="position-right">
+      <%= link_to "単語を編集する", edit_content_path(@content.id), class: "edit-btn" %>
+    </div>
+  <% end %>
+  <div class="show-content-top">
+    <div class="show-content-top-left">
+      <div class="word">
+        <%= @content.word %>
       </div>
 
-      <% if sentence.japanese_text.present? %>
+      <div>
+        <%= @content.part.name %>
+      </div>
+    </div>
+
+    <div class="show-content-top-right">
+      <h2>
+        <%= link_to "#{@content.word}の編集履歴", content_contents_history_path(@content.id), class:"edited-history" %>
+      </h2>
+      <% @contents_histories.each do |history| %>
         <div>
-          <b>日本語</b>
-          <div>
-            <%= simple_format(sentence.japanese_text) %>
-          </div>
+          <%= link_to "#{history.user.nickname}さん", profile_path(history.user.id), class: "edited-nickname" %>
+          <br><%= history.created_at.strftime("%Y-%m-%d %H:%M") %>
+        </div>
+        <div>
+          <%= history.word %>
         </div>
       <% end %>
+    </div>
+  </div>
 
-      <% if user_signed_in? && sentence.user.id == current_user.id %>
-        <%= link_to "編集する", edit_content_sentence_path(@content.id, sentence.id) %>
-        <%= link_to "削除する", content_sentence_path(@content.id, sentence.id), method: :delete %>
+
+  <div class="show-content-bottom">
+    <div class="bottom-description">
+      <h2>
+        意味
+        <% if user_signed_in? %>
+          <%= link_to "＋", new_content_description_path(@content.id), class: "plus-btn" %>
+        <% end %>
+      </h2>
+
+      <div class="description-group">
+        <% if @descriptions.present? %>
+          <% @descriptions.each do |description| %>
+            <div class="description">
+              <div>
+                <%= link_to "#{description.user.nickname}さん", profile_path(description.user.id) %>
+              </div>
+              <div>
+                <%= simple_format(description.english_text) %>
+              </div>
+              <% if user_signed_in? && description.user.id == current_user.id %>
+                <%= link_to "編集する", edit_content_description_path(@content.id, description.id), class: "edit-btn" %>
+                <%= link_to "削除する", content_description_path(@content.id, description.id), method: :delete, class: "delete-btn" %>
+              <% end %>
+            </div>
+          <% end %>
+        <% else %>
+          意味のデータが存在しません
+        <% end %>
+      </div>
+    </div>
+
+    <div class="bottom-sentence">
+      <h2>
+        例文
+        <% if user_signed_in? %>
+          <%= link_to "＋", new_content_sentence_path(@content.id), class: "plus-btn" %>
+        <% end %>
+      </h2>
+
+      <% if @sentences.present? %>
+        <% @sentences.each do |sentence| %>
+          <div class="bottom-one-sentence">
+            <div class="bottom-sentence-info">
+              <div>
+                <%= link_to "#{sentence.user.nickname}", profile_path(sentence.user.id) %>
+              </div>
+              <div>
+                <%= sentence.created_at.strftime("%Y-%m-%d %H:%M") %>
+              </div>
+            </div>
+            <br><b>英語</b>
+            <div>
+              <%= simple_format(sentence.english_text) %>
+            </div>
+
+            <% if sentence.japanese_text.present? %>
+              <div>
+                <b>日本語</b>
+              </div> 
+              <div>
+                <%= simple_format(sentence.japanese_text) %>
+              </div>
+            <% end %>
+
+            <% if user_signed_in? && sentence.user.id == current_user.id %>
+              <%= link_to "編集する", edit_content_sentence_path(@content.id, sentence.id),class: "edit-btn" %>
+              <%= link_to "削除する", content_sentence_path(@content.id, sentence.id), method: :delete, class: "delete-btn" %>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <div>
+          例文のデータが存在しません
+        </div>
       <% end %>
-    <% end %>
+    </div>
   </div>
-<% else %>
-  <div>
-    例文のデータが存在しません
-  </div>
-<% end %>
-
-<% if user_signed_in? %>
-  <div>
-    <%= link_to "例文を追加する", new_content_sentence_path(@content.id) %>
-  </div>
-<% end %>
+</div>
