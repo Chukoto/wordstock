@@ -13,7 +13,9 @@
   <div class="show-content-top">
     <div class="show-content-top-left">
       <div class="word">
-        <%= @content.word %>
+        <div class="break-all">
+          <%= @content.word %>
+        </div>
       </div>
 
       <div>
@@ -54,7 +56,7 @@
               <div>
                 <%= link_to "#{description.user.nickname}さん", profile_path(description.user.id) %>
               </div>
-              <div>
+              <div class="break-all">
                 <%= simple_format(description.english_text) %>
               </div>
               <% if user_signed_in? && description.user.id == current_user.id %>
