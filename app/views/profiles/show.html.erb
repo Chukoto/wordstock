@@ -1,5 +1,11 @@
 <%= render "shared/header" %>
 
+<div class="ok-flash">
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
+</div>
+
 <div class="show-profile-main">
   <div class="left-content">
     <div class="profile-group">

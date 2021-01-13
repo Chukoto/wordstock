@@ -1,9 +1,12 @@
 <%= render "shared/header"%>
 
+  <div class="ok-flash">
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+  </div>
+
 <div class="new-edit-diaries-main">
-  <% if flash[:notice] %>
-    <%= flash[:notice] %>
-  <% end %>
 
   <h1>
     あなたの日記

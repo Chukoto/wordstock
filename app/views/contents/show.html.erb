@@ -1,8 +1,10 @@
 <%= render "shared/header" %>
 
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
-<% end %>
+<div class="ok-flash">
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
+  <% end %>
+</div>
 
 <div class="show-content-main">
   <% if user_signed_in? %>
