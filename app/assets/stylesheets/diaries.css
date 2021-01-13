@@ -1,0 +1,29 @@
+.new-edit-diaries-main {
+  margin: 5vh 10vw 5vh 10vw;
+}
+
+.diaries-group {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.one-diary {
+  width: 48%;
+  margin-bottom: 50px;
+  word-break: break-all;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+.diary-title {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.diary-text {
+  font-size: 18px;
+  margin-bottom: 10px;
+}

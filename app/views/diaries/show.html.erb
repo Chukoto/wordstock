@@ -1,48 +1,45 @@
 <%= render "shared/header"%>
 
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
-<% end %>
-
-<h1>
-  あなたの日記
-</h1>
-
-<div>
-  <%= link_to "日記を作成する", new_diary_path %>
-</div>
-
-<% if @diaries.exists? %>
-
-  <% @diaries.each do |diary|  %>
-
-    -----------------------
-    <div>
-      <div>
-        <%= diary.created_at%>
-      </div>
-
-      <div>
-        タイトル
-        <%= diary.title %>
-      </div>
-
-      <div>
-        内容
-        <%= diary.text %>
-      </div>
-    </div>
-
-    <% if user_signed_in? && current_user.id == diary.user_id %>
-      <div>
-        <%= link_to "編集", edit_diary_path(diary.id) %>
-        <%= link_to "削除", diary_path(diary.id), method: :delete %>
-      </div>
-    <% end %>
+<div class="new-edit-diaries-main">
+  <% if flash[:notice] %>
+    <%= flash[:notice] %>
   <% end %>
 
-<% else %>
+  <h1>
+    あなたの日記
+    <%= link_to "＋", new_diary_path, class:"plus-btn" %>
+  </h1>
 
-  表示できる日記がありません。
+  <% if @diaries.exists? %>
 
-<% end %>
+    <div class="diaries-group">
+    <% @diaries.each do |diary|  %>
+      <div class="one-diary">
+        <div>
+          <%= diary.created_at.strftime("%Y-%m-%d %H:%M")%>
+        </div>
+
+        <div class="diary-title">
+          <%= diary.title %>
+        </div>
+
+        <div class="diary-text">
+          <%= diary.text %>
+        </div>
+
+        <% if user_signed_in? && current_user.id == diary.user_id %>
+          <div>
+            <%= link_to "編集", edit_diary_path(diary.id), class: "edit-btn" %>
+            <%= link_to "削除", diary_path(diary.id), method: :delete, class: "delete-btn" %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+    </div>
+
+  <% else %>
+
+    表示できる日記がありません。
+
+  <% end %>
+</div>

@@ -1,40 +1,41 @@
 <%= render "shared/header"%>
 
-<h1>
-  みんなの日記
-</h1>
+<div class="new-edit-diaries-main">
 
-<% if @diaries.exists? %>
+  <h1>
+    みんなの日記
+  </h1>
 
-  <% @diaries.each do |diary|  %>
+  <% if @diaries.exists? %>
 
-    -----------------------
-    <div>
-      <div>
-        <%= diary.created_at%>
-      </div>
+    <div class="diaries-group">
+    <% @diaries.each do |diary|  %>
+      <div class="one-diary">
+        <div>
+          <%= diary.created_at.strftime("%Y-%m-%d %H:%M")%>
+        </div>
 
-      <div>
-        タイトル
-        <%= diary.title %>
-      </div>
+        <div class="diary-title">
+          <%= diary.title %>
+        </div>
 
-      <div>
-        内容
-        <%= diary.text %>
-      </div>
-    </div>
+        <div class="diary-text">
+          <%= diary.text %>
+        </div>
 
-    <% if user_signed_in? && current_user.id == diary.user_id %>
-      <div>
-        <%= link_to "編集", edit_diary_path(diary.id) %>
-        <%= link_to "削除", diary_path(diary.id), method: :delete %>
+        <% if user_signed_in? && current_user.id == diary.user_id %>
+          <div>
+            <%= link_to "編集", edit_diary_path(diary.id), class: "edit-btn" %>
+            <%= link_to "削除", diary_path(diary.id), method: :delete, class: "delete-btn" %>
+          </div>
+        <% end %>
       </div>
     <% end %>
+    </div>
+
+  <% else %>
+
+    表示できる日記がありません。
+
   <% end %>
-
-<% else %>
-
-  表示できる日記がありません。
-
-<% end %>
+</div>
