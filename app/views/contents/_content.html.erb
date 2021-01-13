@@ -1,18 +1,16 @@
-<div>
+<div class="description">
   <div>
     <b><%= content.word%></b>
-    <%= content.part.name %>
+    <br><%= content.part.name %>
   </div>
  
   <div>
-    <%= content.created_at %>
+    <%= content.created_at.strftime("%Y-%m-%d %H:%M") %>
   </div>
 
-  <div>
-    <%= link_to "#{content.word}を見る", content_path(content.id) %>
+  <div class="description-bottom">
+    <div>
+      <%= link_to "詳細", content_path(content.id)%>
+    </div>
   </div>
 </div>
-
-<%# CSS作成段階でスペースを削除すること %>
-　
-<%# //CSS作成段階でスペースを削除すること %>
