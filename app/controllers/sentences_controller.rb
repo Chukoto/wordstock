@@ -17,7 +17,7 @@ class SentencesController < ApplicationController
         render :new
       end
     else
-      flash.now[:alert] = "！必ず英語のテキストに#{@sentence.content.word}を含めてください！"
+      flash.now[:alert] = "必ず英語のテキストに#{@sentence.content.word}を含めてください"
       render :new
     end
   end
@@ -33,7 +33,7 @@ class SentencesController < ApplicationController
         render :edit
       end
     else
-      flash.now[:alert] = "！必ず英語のテキストに#{@sentence.content.word}を含めてください！"
+      flash.now[:alert] = "必ず英語のテキストに#{@sentence.content.word}を含めてください"
       render :edit
     end
   end

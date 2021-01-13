@@ -164,3 +164,8 @@
 .break-all {
   word-break: break-all;
 }
+
+.ok-flash {
+  background-color: #3598f7;
+  color: white;
+}

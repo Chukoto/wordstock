@@ -1,12 +1,14 @@
 <%= render "shared/header" %>
 
+  <div class="ok-flash">
+    <% if flash[:notice] %>
+      <%= flash[:notice] %>
+    <% end %>
+  </div>
+
 <div class="main">
   <div class="left-content">
     <div class="contents">
-      <% if flash[:notice] %>
-        <%= flash[:notice] %>
-      <% end %>
-
       <%# 単語一覧 %>
       <div>
         <h2>
