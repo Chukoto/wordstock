@@ -1,13 +1,23 @@
-あなたのプロフィール文
+<%= render "shared/header" %>
 
-<%= form_with model: @profile, url: profiles_path, method: :post, local: true do |f| %>
+<div class="new-edit-profile-main">
+  <div class="font-size-twenty-five">
+    <h2>
+      あなたのプロフィール文
+    </h2>
 
-<%= render 'shared/error_messages', model: f.object %>
+    <%= form_with model: @profile, url: profiles_path, method: :post, local: true do |f| %>
 
-<%= f.text_area :text, class:"text", id:"text_id", placeholder:"プロフィールを入力してください（未記入可）", rows: "15", cols: "80" %>
+      <div class="error-messages">
+        <%= render 'shared/error_messages', model: f.object %>
+      </div>
 
-<div>
-  <%= f.submit "作成する", class: "submit-btn" %>
+    <%= f.text_area :text, class:"text", id:"text_id", placeholder:"プロフィールを入力してください（未記入可）", cols: "50", rows: "10" %>
+
+    <div>
+      <%= f.submit "作成する", class: "new-btn" %>
+    </div>
+
+    <% end %>
+  </div>
 </div>
-
-<% end %>
