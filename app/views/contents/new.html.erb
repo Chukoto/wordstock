@@ -2,7 +2,7 @@
 
 <%= form_with model: @content, url: contents_path, method: :post, local: true do |f| %>
 
-  <div class="new-content-main">
+  <div class="new-show-content-main">
     <h2>
       単語を追加
     </h2>
@@ -11,7 +11,7 @@
       <%= render 'shared/error_messages', model: f.object %>
     </div>
 
-    <div class="test">
+    <div class="font-size-twenty-five">
       <%# 品詞 %>
       <div>
         品詞
