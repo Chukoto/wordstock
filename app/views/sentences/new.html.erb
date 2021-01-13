@@ -1,34 +1,47 @@
+<%= render 'shared/header' %>
+
 <%= form_with model: @sentence, url: content_sentences_path, method: :post, local: true do |f| %>
 
-<%= render 'shared/error_messages', model: f.object %>
 
-<h1>
-  例文
-</h1>
+  <div class="font-size-twenty">
+    <h2 class="position-center">
+      例文を追加
+    </h2>
 
-<%# 例文の説明 %>
-<h2>
-英語のテキスト
-</h2>
+    <div class="position-center">
+      <% if flash[:alert] %>
+        <%= flash[:alert] %>
+      <% end %>
+    </div>
 
-<% if flash[:alert] %>
-  <%= flash[:alert] %>
-<% end %>
+    <div class="error-messages">
+      <%= render 'shared/error_messages', model: f.object %>
+    </div>
 
-<div>
-  <%= f.text_area :english_text, class:"english_text", placeholder: "English text only（必須）", cols: 50, rows: 10 %>
-</div>
+    <div class="new-edit-sentences-main">
+      <div class="english-text">
+        <div>
+        英語のテキスト
+        </div>
 
-<h2>
-  日本語のテキスト
-</h2>
-<div>
-  <%= f.text_area :japanese_text, class:"japanese_text", placeholder: "日本語だけを入力（未記入でも可）", cols: 50, rows: 10 %>
-</div>
-<%# //例文の説明 %>
+        <div>
+          <%= f.text_area :english_text, class:"english_text", placeholder: "English text only（必須）", cols: 50, rows: 10 %>
+        </div>
+      </div>
 
-<div>
-  <%= f.submit "追加する", class:"post"  %>
-</div>
+      <div class="japanese-text">
+        <div>
+          日本語のテキスト
+        </div>
+        <div>
+          <%= f.text_area :japanese_text, class:"japanese_text", placeholder: "日本語だけを入力（未記入でも可）", cols: 50, rows: 10 %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="position-center">
+    <%= f.submit "追加する", class:"new-btn"  %>
+  </div>
 
 <% end %>
