@@ -1,13 +1,21 @@
-<h1>単語"<%= "#{@content_word}" %>"の編集履歴一覧</h1>
+<%= render "shared/header"%>
 
-<% @contents_histories.each do |history| %>
-  <div>
-    <%= link_to "#{history.user.nickname}さん", profile_path(history.user.id) %>
-  </div>
-  <div>
-    <%= history.created_at %>
-  </div>
-    <div>
-    <%= history.word %>
-  </div>
-<% end %>
+<div class="histories-main">
+
+  <h1>単語"<%= "#{@content_word}" %>"の編集履歴一覧</h1>
+
+  <% @contents_histories.each do |history| %>
+    <div class="editors">
+      <div>
+        <%= link_to "#{history.user.nickname}さん", profile_path(history.user.id) %>
+      </div>
+      <div>
+        <%= history.created_at %>
+      </div>
+        <div>
+        <%= history.word %>
+      </div>
+    </div>
+  <% end %>
+
+</div>
