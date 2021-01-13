@@ -25,8 +25,9 @@ class ContentsController < ApplicationController
   end
 
   def show
-    @descriptions = Description.where(content_id: params[:id])
-    @sentences = Sentence.where(content_id: params[:id])
+    @descriptions = Description.where(content_id: params[:id]).order('updated_at desc')
+    @sentences = Sentence.where(content_id: params[:id]).order('updated_at desc')
+    @contents_histories = ContentsHistory.where(content_id: params[:id]).order('updated_at desc').limit(3)
   end
 
   def edit
