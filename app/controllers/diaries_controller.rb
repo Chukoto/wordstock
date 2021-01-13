@@ -1,7 +1,7 @@
 class DiariesController < ApplicationController
-  before_action :authenticate_user!, only: [:new, :edit]
-  before_action :specified_diary, only: [:edit, :update]
-  before_action :specified_user, only: [:edit]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :specified_diary, only: [:edit, :update, :destroy]
+  before_action :specified_user, only: [:edit, :destroy]
 
   def index
     @diaries = Diary.order("created_at DESC")
@@ -19,7 +19,7 @@ class DiariesController < ApplicationController
     @diary = Diary.new(diary_params)
     if @diary.save
       make_count
-      redirect_to diary_path(current_user.id)
+      redirect_to diary_path(current_user.id), notice: "日記の作成に成功しました"
     else
       render :new
     end
@@ -30,9 +30,17 @@ class DiariesController < ApplicationController
 
   def update
     if @diary.update(diary_params)
-      redirect_to diary_path(current_user.id)
+      redirect_to diary_path(current_user.id), notice: "日記の編集に成功しました"
     else
       render :edit
+    end
+  end
+
+  def destroy
+    if @diary.destroy
+      redirect_to diary_path(current_user.id),  notice: "日記の削除に成功しました"
+    else
+      render :show
     end
   end
 

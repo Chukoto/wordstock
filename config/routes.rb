@@ -8,7 +8,7 @@ Rails.application.routes.draw do
 
   root to: 'contents#index'
 
-  resources :diaries, only: [:index, :show, :new, :create, :edit, :update]
+  resources :diaries
   resources :profiles, only: [:show, :new, :create, :edit, :update]
 
   resources :contents, only: [:index, :new, :create, :show, :edit, :update] do
