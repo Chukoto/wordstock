@@ -47,10 +47,10 @@
         <% end %>
       </h2>
 
-      <div class="description-group">
+      <div class="show-content-description-group">
         <% if @descriptions.present? %>
           <% @descriptions.each do |description| %>
-            <div class="description">
+            <div class="show-content-description">
               <div>
                 <%= link_to "#{description.user.nickname}さん", profile_path(description.user.id) %>
               </div>

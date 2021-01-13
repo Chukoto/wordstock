@@ -115,14 +115,15 @@
   margin-bottom: 20px;
 }
 
-.bott {
+.show-content-description-group {
   display: flex;
   flex-wrap: nowrap;
 }
 
-.description {
+.show-content-description {
   margin: 24px;
   width: 29%;
+  border-bottom: 1px solid #bbbbbb;;
 }
 
 .bottom-sentence-info {
