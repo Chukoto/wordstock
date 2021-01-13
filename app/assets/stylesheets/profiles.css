@@ -1,0 +1,41 @@
+/* show */
+
+.show-profile-main {
+  margin: 5vh 10vw 5vh 10vw;
+  display:flex;
+  justify-content: space-between;
+}
+
+.profile-text {
+  font-size: 20px;;
+  margin: 20px 0;
+  word-break: break-all;
+  border-bottom: 1px solid #bbbbbb;
+}
+
+.post-counter-group {
+  background: linear-gradient(to bottom left,#98f735, #f73598);
+  text-align: center;
+  padding: 3vh 3vw;
+  width: 25vw;
+  margin-left: 3vw;
+  border-radius: 20px;
+}
+
+.counter-name {
+  margin-bottom: 20px;
+}
+
+.count {
+  font-size: 25px;;
+}
+
+/* //show */
+
+/* new && edit */
+
+.new-edit-profile-main {
+  text-align: center;
+}
+
+/* //new && edit */
