@@ -43,8 +43,6 @@
   text-decoration: none;
 }
 
-
-
 .description {
   border-bottom: 1px solid #bbbbbb;;
 }
@@ -60,10 +58,6 @@
 .new-show-content-main {
   margin: 5vh 10vw 5vh 10vw;
   text-align: center;
-}
-
-.font-size-twenty-five {
-  font-size: 25px;
 }
 
 /* //new && edit */
