@@ -1,39 +1,64 @@
-<% if user_signed_in? && current_user.id == @user.id %>
-  <div>
-    あなたのプロフィール
+<%= render "shared/header" %>
+
+<div class="show-profile-main">
+  <div class="left-content">
+    <div class="profile-group">
+      <% if user_signed_in? && current_user.id == @user.id %>
+        <h1>
+          あなたのプロフィール
+        </h1>
+          <% if @profile == nil %>
+            <div>
+              <%= link_to "プロフィール文を作成する", new_profile_path %>
+            </div>
+          <% else %>
+            <div>
+              <%= link_to "編集する", edit_profile_path %>
+            </div>
+          <% end %>
+      <% else %>
+        <div>
+          <%= "#{@user.nickname}さんのプロフィール" %>
+        </div>
+      <% end %>
+
+      <div class="profile-text">
+        <% if @profile == nil %>
+          <b>
+            プロフィール文がありません。
+          </b>
+        <% else %>
+          <span>
+            プロフィール文
+          </span>
+          <div>
+            <%= simple_format(@profile.text) %>
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
 
-  <% if @profile == nil %>
-    <div>
-      <%= link_to "プロフィール文を作成する", new_profile_path %>
-    </div>
-    <b>
-      プロフィール文がありません。
-    </b>
-  <% else %>
-    <div>
-      <%= link_to "編集する", edit_profile_path %>
-    </div>
-    <b>
-      プロフィール文
-    </b>
-    <div>
-      <%= simple_format(@profile.text) %>
-    </div>
-    <div>
-      <%= "単語投稿回数：" %><b><%= "#{@profile.user.content_count.to_i}回" %></b>
-    </div>
-    <div>
-      <%= "意味投稿回数：" %><b><%= "#{@profile.user.description_count.to_i}回" %></b>
-    </div>
-    <div>
-      <%= "例文投稿回数：" %><b><%= "#{@profile.user.sentence_count.to_i}回" %></b>
-    </div>
-    <div>
-      <%= "日記投稿回数：" %><b><%= "#{@profile.user.diary_count.to_i}回" %></b>
-    </div>
-  <% end %>
+  <div class="right-content">
+    <% if @profile != nil %>
+      <div class="post-counter-group">
+        <h2>
+          投稿カウンター
+        </h2>
+        <h3 class="counter-name">
+          <%= "単語投稿回数：" %><span class="count"><%= "#{@profile.user.content_count.to_i}回" %></span>
+        </h3>
+        <h3 class="counter-name">
+          <%= "意味投稿回数：" %><span class="count"><%= "#{@profile.user.description_count.to_i}回" %></span>
+        </h3>
+        <h3 class="counter-name">
+          <%= "例文投稿回数：" %><span class="count"><%= "#{@profile.user.sentence_count.to_i}回" %></span>
+        </h3>
+        <h3 class="counter-name">
+          <%= "日記投稿回数：" %><span class="count"><%= "#{@profile.user.diary_count.to_i}回" %></span>
+        </h3>
+      </div>
+    <% end %>
+  </div>
 
-<% else %>
-  <%= "#{@user.nickname}さんのプロフィール" %>
-<% end %>
+</div>
