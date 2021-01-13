@@ -15,7 +15,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     if @profile.save
-      redirect_to profile_path(current_user.id)
+      redirect_to profile_path(current_user.id), notice: "プロフィールの作成に成功しました"
     else
       render :new
     end
@@ -26,7 +26,7 @@ class ProfilesController < ApplicationController
 
   def update
     if @profile.update(profile_params)
-      redirect_to profile_path(current_user.id)
+      redirect_to profile_path(current_user.id), notice: "プロフィールの更新に成功しました"
     else
       render :edit
     end
