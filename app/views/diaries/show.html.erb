@@ -1,3 +1,9 @@
+<%= render "shared/header"%>
+
+<% if flash[:notice] %>
+  <%= flash[:notice] %>
+<% end %>
+
 <h1>
   あなたの日記
 </h1>
@@ -29,7 +35,8 @@
 
     <% if user_signed_in? && current_user.id == diary.user_id %>
       <div>
-        <%= link_to "編集する", edit_diary_path(diary.id) %>
+        <%= link_to "編集", edit_diary_path(diary.id) %>
+        <%= link_to "削除", diary_path(diary.id), method: :delete %>
       </div>
     <% end %>
   <% end %>
