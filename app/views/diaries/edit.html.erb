@@ -1,30 +1,39 @@
+<%= render "shared/header"%>
+
 <%= form_with model: @diary, url: diary_path, method: :patch, local: true do |f| %>
 
-
-  <%= render 'shared/error_messages', model: f.object %>
   
-  <h1>
-    日記
-  </h1>
+<div class="position-center">
+  <div class="font-size-twenty-five">
 
-  <div>
-    タイトル
-  </div>
+    <h2>
+      日記
+    </h2>
 
-  <div>
-    <%= f.text_field :title, class:"diary_title", placeholder: "English text only（必須）" %>
-  </div>
+    <div class="error-messages">
+      <%= render 'shared/error_messages', model: f.object %>
+    </div>
 
-  <div>
-    内容
-  </div>
+    <div>
+      タイトル
+    </div>
 
-  <div>
-    <%= f.text_area :text, class:"diary_text", placeholder: "English text only（必須）", cols: 50, rows: 10 %>
-  </div>
+    <div>
+      <%= f.text_field :title, class:"diary_title", placeholder: "English text only（必須）" %>
+    </div>
 
+    <div>
+      内容
+    </div>
+
+    <div>
+      <%= f.text_area :text, class:"diary_text", placeholder: "English text only（必須）", cols: 50, rows: 10 %>
+    </div>
+
+    <div>
+      <%= f.submit "作成する", class:"new-btn" %>
+    </div>
   </div>
-    <%= f.submit "更新する", class:"post" %>
-  </div>
+</div>
 
 <% end %>
