@@ -1,0 +1,27 @@
+ja:
+  activerecord:
+    models:
+      content: 単語
+      contents_history: 単語の編集履歴
+      description: 意味
+      diary: 日記
+      profile: プロフィール
+      sentence: 例文
+    attributes:
+      content:
+        part_id: 品詞
+        word: 単語
+      description:
+        english_text: 意味
+      diary:
+        title: タイトル
+        text: 内容
+      profile:
+        text: プロフィール文
+      sentence:
+        english_text: 英語のテキスト
+        japanese_text: 日本語のテキスト
+
+
+        
+
