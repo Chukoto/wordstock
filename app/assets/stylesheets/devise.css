@@ -1,9 +1,9 @@
-.new-registration-main {
+.devise-main {
   margin: 5vh 10vw 5vh 10vw;
   text-align: center;
 }
 
-.registration-form {
+.devise-form {
   font-size: 20px;
   margin-bottom: 15px;
 }

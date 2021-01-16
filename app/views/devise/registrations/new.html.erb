@@ -1,6 +1,6 @@
 <%= render 'shared/header'%>
 
-<div class="new-registration-main">
+<div class="devise-main">
 
   <h2>新規登録</h2>
 
@@ -9,12 +9,12 @@
 
     <div class="field">
       <%= f.label :nickname, "ニックネーム" %><br />
-      <%= f.text_field :nickname, autofocus: true, class:"registration-form" %>
+      <%= f.text_field :nickname, autofocus: true, class:"devise-form" %>
     </div>
 
     <div class="field">
       <%= f.label :email %><br />
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"registration-form" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"devise-form" %>
     </div>
 
     <div class="field">
@@ -22,12 +22,12 @@
       <% if @minimum_password_length %>
       <em>(最低 <%= @minimum_password_length %>文字以上)</em>
       <% end %><br />
-      <%= f.password_field :password, autocomplete: "new-password", class:"registration-form" %>
+      <%= f.password_field :password, autocomplete: "new-password", class:"devise-form" %>
     </div>
 
     <div class="field">
       <%= f.label :password_confirmation %><br />
-      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"registration-form" %>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"devise-form" %>
     </div>
 
     <div class="actions">
