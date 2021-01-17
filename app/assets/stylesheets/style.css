@@ -167,6 +167,7 @@
 
 .ok-flash {
   font-size: 15px;
+  font-weight: bold;
   padding: 0vh 10vw 0vh 10vw;
   background-color: #3598f7;
   color: white;
