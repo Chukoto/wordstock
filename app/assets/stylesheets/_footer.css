@@ -1,0 +1,42 @@
+.footer-contents {
+  margin: 20vh 0;
+  border-top: 1px solid #bbbbbb;
+  height: 10vh;
+}
+
+.about-me {
+  font-size: 12px;
+  font-weight: bold;
+  text-align: center;
+  margin: 5vh 0;
+}
+
+.portfolio {
+  margin: 0 20vw;
+  display: flex;
+  justify-content: space-around;
+}
+
+.footer-contents ul {
+  list-style: none;
+}
+
+.footer-left {
+  width: 50%;
+  text-align: center;
+}
+
+.footer-right {
+  width: 50%;
+  text-align: center;
+}
+
+.footer-link {
+  color: #4b4b4b;
+  font-size: 12px;
+  line-height: 30px;
+}
+
+.footer-link:hover {
+  text-decoration: none;
+}
