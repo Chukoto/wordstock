@@ -1,5 +1,5 @@
 .footer-contents {
-  margin: 0 10vw 0 10vw;
+  margin: 20vh 0;
   border-top: 1px solid #bbbbbb;
   height: 10vh;
 }
@@ -8,10 +8,11 @@
   font-size: 12px;
   font-weight: bold;
   text-align: center;
-  margin: 2vh 0;
+  margin: 5vh 0;
 }
 
 .portfolio {
+  margin: 0 20vw;
   display: flex;
   justify-content: space-around;
 }
