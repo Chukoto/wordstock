@@ -11,7 +11,7 @@ class DescriptionsController < ApplicationController
     @description = Description.new(description_params)
     if @description.save
       make_count
-      redirect_to content_path(@description.content_id), notice: "意味の追加に成功しました"
+      redirect_to content_path(@description.content_id), notice: '意味の追加に成功しました'
     else
       render :new
     end
@@ -22,15 +22,15 @@ class DescriptionsController < ApplicationController
 
   def update
     if @description.update(description_params)
-      redirect_to content_path(@description.content_id), notice: "意味の編集に成功しました"
+      redirect_to content_path(@description.content_id), notice: '意味の編集に成功しました'
     else
       render :edit
     end
   end
 
   def destroy
-    if  @description.destroy
-      redirect_to content_path(@description.content_id), notice: "意味の削除に成功しました"
+    if @description.destroy
+      redirect_to content_path(@description.content_id), notice: '意味の削除に成功しました'
     else
       render :show
     end
@@ -47,8 +47,9 @@ class DescriptionsController < ApplicationController
   end
 
   def specified_user
-    redirect_to root_path unless @description.user.id == current_user.id 
+    redirect_to root_path unless @description.user.id == current_user.id
   end
+
   def make_count
     sum = current_user.description_count.to_i + 1
     current_user.update_column(:description_count, sum)
