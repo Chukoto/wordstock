@@ -2,7 +2,7 @@ class SentencesController < ApplicationController
   before_action :authenticate_user!, only: [:edit]
   before_action :specified_sentence, only: [:edit, :update, :destroy]
   before_action :specified_user, only: [:edit, :destroy]
- 
+
   def new
     @sentence = Sentence.new
   end
@@ -12,7 +12,7 @@ class SentencesController < ApplicationController
     if create_having_word?
       if @sentence.save
         make_count
-        redirect_to content_path(@sentence.content_id), notice: "例文の追加に成功しました"
+        redirect_to content_path(@sentence.content_id), notice: '例文の追加に成功しました'
       else
         render :new
       end
@@ -27,8 +27,8 @@ class SentencesController < ApplicationController
 
   def update
     if update_having_word?
-      if @sentence.update(sentence_params) 
-        redirect_to content_path(@sentence.content_id), notice: "例文の編集に成功しました"
+      if @sentence.update(sentence_params)
+        redirect_to content_path(@sentence.content_id), notice: '例文の編集に成功しました'
       else
         render :edit
       end
@@ -40,7 +40,7 @@ class SentencesController < ApplicationController
 
   def destroy
     if @sentence.destroy
-      redirect_to content_path(@sentence.content_id), notice: "例文の削除に成功しました"
+      redirect_to content_path(@sentence.content_id), notice: '例文の削除に成功しました'
     else
       render :show
     end
@@ -65,7 +65,7 @@ class SentencesController < ApplicationController
   end
 
   def update_having_word?
-    params.require(:sentence).permit(:english_text).to_s.include?("#{@sentence.content.word}")
+    params.require(:sentence).permit(:english_text).to_s.include?(@sentence.content.word.to_s)
   end
 
   def make_count

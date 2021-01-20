@@ -5,5 +5,4 @@ class Diary < ApplicationRecord
     validates :title, format: { without: /\A[ぁ-んァ-ン一-龥]+\z/ }
     validates :text, format: { without: /\A[ぁ-んァ-ン一-龥]+\z/ }
   end
-  
 end
