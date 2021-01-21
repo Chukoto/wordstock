@@ -7,6 +7,7 @@ ja:
       diary: 日記
       profile: プロフィール
       sentence: 例文
+      user: ユーザー
     attributes:
       content:
         part_id: 品詞
@@ -21,6 +22,8 @@ ja:
       sentence:
         english_text: 英語のテキスト
         japanese_text: 日本語のテキスト
+      user:
+        nickname: ニックネーム
 
 
         
