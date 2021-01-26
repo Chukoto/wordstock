@@ -4,14 +4,14 @@ describe Content do
     @content = FactoryBot.build(:content)
   end
 
-  describe '意味の作成' do
-    context '意味の作成がうまくいく時' do
+  describe '単語の作成' do
+    context '単語の作成がうまくいく時' do
       it "user_idが存在し, part_id、wordが存在すれば保存されること" do
         expect(@content).to be_valid
       end
     end
 
-    context '意味の作成がうまくいかない時' do
+    context '単語の作成がうまくいかない時' do
       it "part_idが0だと登録できない" do
         @content.part_id = 0
         @content.valid?
