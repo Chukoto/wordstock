@@ -28,12 +28,6 @@ describe Sentence do
         @sentence.valid?
         expect(@sentence.errors.full_messages).to include "英語のテキストは不正な値です"
       end
-
-      it "japanese_textが英語では保存できない" do
-        @sentence.japanese_text = "english"
-        @sentence.valid?
-        expect(@sentence.errors.full_messages).to include "日本語のテキストは不正な値です"
-      end
     end
   end
 end
