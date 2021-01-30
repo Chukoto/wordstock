@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   root to: 'contents#index'
 
   resources :diaries
-  resources :profiles, only: [:show, :new, :create, :edit, :update]
+  resources :profiles, except: [:index, :destroy]
 
-  resources :contents, only: [:index, :new, :create, :show, :edit, :update] do
-    resources :descriptions, only: [:new, :create, :edit, :update, :destroy]
-    resources :sentences, only: [:new, :create, :edit, :update, :destroy]
+  resources :contents, except: [:destroy] do
+    resources :descriptions, except: [:index, :show]
+    resources :sentences, except: [:index, :show]
     resources :contents_histories, only: [:show]
     collection do
       get 'search'

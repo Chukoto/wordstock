@@ -18,7 +18,8 @@ class ContentsController < ApplicationController
     if @content.save
       make_new_history
       make_count
-      redirect_to content_path(@content.id), notice: '単語の追加に成功しました'
+      redirect_to content_path(@content.id),
+      notice: '単語の追加に成功しました'
     else
       render :new
     end
