@@ -12,7 +12,7 @@
         <%= render 'shared/error_messages', model: f.object %>
       </div>
 
-    <%= f.text_area :text, class:"text", id:"text_id", placeholder:"プロフィールを入力してください", cols: "50", rows: "10" %>
+    <%= f.text_area :text, class:"text", id:"text_id", placeholder:"プロフィールを入力してください（1文字以上200文字以下）", cols: "50", rows: "10" %>
 
     <div>
       <%= f.submit "編集する", class: "edit-btn" %>
