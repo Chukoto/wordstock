@@ -17,6 +17,12 @@
   margin: 0 10vw 0 10vw;
 }
 
+.about-wordstock {
+  font-size: 14px;
+  margin: 1vh 10vw 0 10vw;
+  text-align: right;
+}
+
 .nav {
   font-size: 18px;
   display: flex;
