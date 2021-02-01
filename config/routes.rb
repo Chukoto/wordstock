@@ -6,6 +6,8 @@ Rails.application.routes.draw do
     post '/users/guest_sign_in', to: 'users/sessions#new_guest'
   end
 
+  get "contents/about" => "contents#about"
+
   root to: 'contents#index'
 
   resources :diaries
