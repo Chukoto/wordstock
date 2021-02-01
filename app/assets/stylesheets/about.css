@@ -3,3 +3,28 @@
   margin: 1vh 10vw 0 10vw;
   text-align: right;
 }
+
+.about-main {
+  margin: 5vh 10vw 5vh 10vw;
+}
+
+.useful-function {
+  margin: 5vh 0;
+}
+
+.learning-points {
+  margin: 5vh 0;
+}
+
+.learning-point {
+  margin: 2vh 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.get-started {
+  margin: 5vh 0;
+  text-align: center;
+  font-size: 25px;
+  font-weight: bold;
+}
