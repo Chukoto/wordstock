@@ -9,7 +9,7 @@
 .new-btn {
 	background-color:#92d948;
 	border-radius:28px;
-	border:1px solid #98f735;
+  border:1px solid white;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -60,7 +60,7 @@
 .edit-btn {
 	background-color:#f73598;
 	border-radius:28px;
-  border:1px solid #d94892;
+  border:1px solid white;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -85,7 +85,7 @@
 .edit-btn {
 	background-color:#f73598;
 	border-radius:28px;
-  border:1px solid #d94892;
+  border:1px solid white;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -110,7 +110,7 @@
 .plus-btn {
 	background-color:#3598f7;
 	border-radius:28px;
-  border:1px solid #4892d9;
+  border:1px solid white;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
@@ -135,7 +135,7 @@
 .delete-btn {
 	background-color:#bbbbbb;
 	border-radius:28px;
-  border:1px solid #acacac;
+  border:1px solid white;
 	display:inline-block;
 	cursor:pointer;
 	color:#ffffff;
